@@ -12,4 +12,5 @@ class Tool extends Model
 
     protected $casts = ['supported_os' => 'array'];
     use SoftDeletes;
+    protected $fillable = ['name', 'img_url', 'description', 'category', 'release_year', 'latest_version', 'download_link', 'supported_os', 'vote'];
 }
