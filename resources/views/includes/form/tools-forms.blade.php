@@ -8,6 +8,16 @@
         <form action="{{ route('tools.store') }}" method="POST">
 @endif
 @csrf
+@if ($errors->any())
+    <div class="alert alert-danger" role="alert">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="col-12"></div>
 <div class="row m-5">
     <div class="col-4">
         <div class="mb-3">
@@ -38,20 +48,20 @@
     </div>
     <div class="col-4 px-5 d-flex flex-column justify-content-start text-capitalize">
         <p class="mb-3">Operative system:</p>
-        <div class="form-check form-switch">
+        <div class="form-check">
             <label class="form-check-label" for="windows">windows</label>
-            <input class="form-check-input" type="checkbox" role="switch" id="windows" name="supported_os"
-                @if ($tool->exists) @if (in_array('windows', $tool->supported_os) || old('supported_os')) checked @endif @endif>
+            <input class="form-check-input" type="checkbox" id="windows" name="supported_os[]"
+                @if ($tool->exists) @if (in_array('windows', $tool->supported_os)) checked @endif @endif value="windows">
         </div>
-        <div class="form-check form-switch">
+        <div class="form-check">
             <label class="form-check-label" for="ios">ios</label>
-            <input class="form-check-input" type="checkbox" role="switch" id="ios" name="supported_os"
-                @if ($tool->exists) @if (in_array('ios', $tool->supported_os) || old('supported_os')) checked @endif @endif>
+            <input class="form-check-input" type="checkbox" id="ios" name="supported_os[]"
+                @if ($tool->exists) @if (in_array('ios', $tool->supported_os)) checked @endif @endif value="ios">
         </div>
-        <div class="form-check form-switch">
+        <div class="form-check">
             <label class="form-check-label" for="linux">linux</label>
-            <input class="form-check-input" type="checkbox" role="switch" id="linux" name="supported_os"
-                @if ($tool->exists) @if (in_array('linux', $tool->supported_os) || old('supported_os')) checked @endif @endif>
+            <input class="form-check-input" type="checkbox" id="linux" name="supported_os[]"
+                @if ($tool->exists) @if (in_array('linux', $tool->supported_os)) checked @endif @endif value="linux">
         </div>
     </div>
     <div class="col-3">
