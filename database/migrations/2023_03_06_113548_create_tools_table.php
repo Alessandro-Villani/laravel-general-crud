@@ -23,6 +23,8 @@ return new class extends Migration
             $table->json('supported_os')->nullable();
             $table->unsignedTinyInteger('vote')->nullable();
             $table->timestamps();
+
+            $table->softDeletes();
         });
     }
 

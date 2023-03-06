@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tool;
 use Illuminate\Http\Request;
+use App\Models\Tool;
 
 class ToolController extends Controller
 {
@@ -60,9 +61,12 @@ class ToolController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tool $tool)
     {
-        //
+        $tool->delete();
+        return to_route('tools.index')
+            ->with('message', "$tool->name è stato eliminato")
+            ->with('type', 'success');
     }
 
     /**
@@ -70,16 +74,21 @@ class ToolController extends Controller
      */
     public function trash()
     {
-        //
+        $tools = Tool::onlyTrashed()->get();
+        return view('tools.trash.index', compact('tools'));
     }
 
-    public function restore()
+    public function restore(int $id)
     {
-        //
+        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool->restore();
+        return to_route('tools.trash.index');
     }
 
-    public function definitiveDelete()
+    public function definitiveDelete(int $id)
     {
-        //
+        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool->forceDelete();
+        return to_route('tools.trash.index');
     }
 }
