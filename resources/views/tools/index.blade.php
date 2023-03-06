@@ -15,17 +15,21 @@
                                 <div class="col-9 tool-data">
                                     <h5 class="mb-1">{{$tool->name}}</h5>
                                     <p class="category mb-0">{{ $tool->category }}</p>
-                                    <div class="rating mb-2">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            <i class="{{ $i <= $tool->vote ? 'fa-solid' : 'fa-regular' }} fa-star text-warning"></i>
-                                        @endfor
-                                    </div>
-                                    <div class="os d-flex align-items-center">
-                                        <p class="mb-0 me-3">For:</p>
-                                        @foreach ( $tool->supported_os as $os )
-                                            <i class="fa-brands me-2 {{ $os === 'ios' ? 'fa-apple' : "fa-$os" }}"></i>
-                                        @endforeach
-                                    </div>
+                                    @if ($tool->vote)
+                                        <div class="rating mb-2">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                <i class="{{ $i <= $tool->vote ? 'fa-solid' : 'fa-regular' }} fa-star text-warning"></i>
+                                            @endfor
+                                        </div>
+                                    @endif
+                                    @if ($tool->supported_os)
+                                        <div class="os d-flex align-items-center">
+                                            <p class="mb-0 me-3">For:</p>
+                                            @foreach ( $tool->supported_os as $os )
+                                                <i class="fa-brands me-2 {{ $os === 'ios' ? 'fa-apple' : "fa-$os" }}"></i>
+                                            @endforeach
+                                        </div>
+                                    @endif
 
                                 </div>
                             </a>
