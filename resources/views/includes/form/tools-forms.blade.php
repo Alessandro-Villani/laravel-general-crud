@@ -13,69 +13,78 @@
         <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" class="form-control" id="name" name='name' placeholder="Name"
-                value="{{ old('name', $card->name) }}">
+                value="{{ old('name', $tool->name) }}">
         </div>
     </div>
     <div class="col-4">
-        <label for="type" class="form-label">Type:</label>
-        <select class="form-select" name="type" id="type">
-            <option @if (old('type', $card->type) === '') selected @endif value="">Select Type</option>
-            @foreach ($types as $type)
-                <option @if (old('type', $card->type) === $type) selected @endif value="{{ $type }}">
-                    {{ ucfirst($type) }}</option>
-            @endforeach
-        </select>
+        <div class="mb-3">
+            <label for="img_url" class="form-label">Url:</label>
+            <input type="url" class="form-control" id="img_url" name='img_url'
+                value="{{ old('img_url', $tool->img_url) }}">
+        </div>
     </div>
     <div class="col-4">
         <div class="mb-3">
-            <label for="thumb" class="form-label">Url:</label>
-            <input type="url" class="form-control" id="thumb" name='thumb'
-                value="{{ old('thumb', $card->thumb) }}">
+            <label for="category" class="form-label">Category:</label>
+            <input type="text" class="form-control" id="category" category='category' placeholder="Category"
+                value="{{ old('category', $tool->category) }}">
         </div>
     </div>
-    <div class="col-6">
-        <div class="mb-3">
+    <div class="col-8">
+        <div class="mb-5">
             <label for="description" class="form-label">Description:</label>
-            <textarea class="form-control" id="description" rows="3" name="description">{{ old('description', $card->description) }}</textarea>
+            <textarea class="form-control" id="description" rows="3" name="description">{{ old('description', $tool->description) }}</textarea>
         </div>
     </div>
-    <div class="col-6">
-        <div class="mb-3">
-            <label for="effect" class="form-label">Effect:</label>
-            <textarea class="form-control" id="effect" name='effect' placeholder="Scrivi gli effetti" rows="3">{{ old('effect', $card->effect ? implode(',', $card->effect) : '') }} </textarea>
+    <div class="col-4 px-5 d-flex flex-column justify-content-start text-capitalize">
+        <p class="mb-3">Operative system:</p>
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="windows">windows</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="windows" name="supported_os"
+                @if (in_array('windows', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
         </div>
-    </div>
-    <div class="col-3">
-        <div class="mb-3">
-            <label for="edition" class="form-label">Edition:</label>
-            <input type="number" class="form-control" id="edition" name='edition' min="0"
-                value="{{ old('edition', $card->edition) }}">
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="ios">ios</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="ios" name="supported_os"
+                @if (in_array('ios', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
         </div>
-    </div>
-    <div class="col-3">
-        <div class="mb-3">
-            <label for="mana" class="form-label">Mana:</label>
-            <input type="number" min="0" max="99" class="form-control" id="mana" name='mana'
-                value="{{ old('mana', $card->mana) }}">
-        </div>
-    </div>
-    <div class="col-3">
-        <div class="mb-3">
-            <label for="str" class="form-label">Strength:</label>
-            <input type="number" min="1" max="9" class="form-control" id="str" name='str'
-                value="{{ old('str', $card->str) }}">
+        <div class="form-check form-switch">
+            <label class="form-check-label" for="linux">linux</label>
+            <input class="form-check-input" type="checkbox" role="switch" id="linux" name="supported_os"
+                @if (in_array('linux', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
         </div>
     </div>
     <div class="col-3">
         <div class="mb-3">
-            <label for="constitution" class="form-label">Constitution:</label>
-            <input type="number" min="1" max="9" class="form-control" id="constitution"
-                name='constitution' value="{{ old('constitution', $card->constitution) }}">
+            <label for="release_year" class="form-label">Release year:</label>
+            <input type="number" class="form-control" id="release_year" name='release_year' min="1950"
+                value="{{ old('release_year', $tool->release_year) }}">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3">
+            <label for="latest_version" class="form-label">Latest version:</label>
+            <input type="number" class="form-control" id="latest_version" name='latest_version' min="0"
+                value="{{ old('latest_version', $tool->latest_version) }}">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3">
+            <label for="vote" class="form-label">Vote:</label>
+            <input type="number" min="1" max="5" class="form-control" id="vote" name='vote'
+                value="{{ old('vote', $tool->vote) }}">
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="mb-3">
+            <label for="download_link" class="form-label">Download link:</label>
+            <input type="url" class="form-control" id="download_link" name='download_link'
+                value="{{ old('download_link', $tool->download_link) }}">
         </div>
     </div>
     <div class="col-3 my-4">
         <button type="submit" class="btn btn-primary">Save</button>
-        <a href="{{ route('cards.index') }}" class="btn btn-success">Back</a>
+        <a href="{{ route('tools.index') }}" class="btn btn-success">Back</a>
     </div>
 </div>
 </form>
