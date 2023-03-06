@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tool;
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule as IlluminateValidationRule;
 
 class ToolController extends Controller
 {
@@ -55,11 +58,11 @@ class ToolController extends Controller
     public function update(Request $request, Tool $tool)
     {
         $request->validate([
-            'name' => 'required|string|unique',
+            'name' => ['required', 'string', IlluminateValidationRule::unique('tools')->ignore($tool->id)],
             'img_url' => 'nullable|url',
             'description' => 'nullable|string',
             'category' => 'nullable|string',
-            'release_year' => 'nullable|date',
+            'release_year' => 'nullable|numeric|min:1950|max:3000',
             'latest_version' => 'nullable|numeric|min:1|max:9',
             'download_link' => 'nullable|url',
             'supported_os' => 'nullable|array',
