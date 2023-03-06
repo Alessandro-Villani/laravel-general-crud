@@ -2,10 +2,6 @@
 
 @section('title', 'Tools')
 
-@section('cdns')
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css' integrity='sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ==' crossorigin='anonymous'/>
-@endsection
-
 @section('content')
     <main id="tools">
         <div class="container py-5">
@@ -45,7 +41,8 @@
                 @endforeach
             </div>
             <div class="buttons d-flex justify-content-center">
-                <a href="{{ route('tools.create') }}" class="btn btn-success"><b>Aggiungi</b></a>
+                <a href="{{ route('tools.create') }}" class="btn btn-success me-3"><b>Aggiungi</b></a>
+                <a href="{{ route('tools.trash.index') }}" class="btn btn-danger"><b><i class="fa-solid fa-trash"></i></b></a>
             </div>
         </div>
     </main>
