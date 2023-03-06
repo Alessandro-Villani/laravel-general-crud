@@ -54,7 +54,17 @@ class ToolController extends Controller
      */
     public function update(Request $request, Tool $tool)
     {
-        $request->validate();
+        $request->validate([
+            'name' => 'required|string|unique',
+            'img_url' => 'nullable|url',
+            'description' => 'nullable|string',
+            'category' => 'nullable|string',
+            'release_year' => 'nullable|date',
+            'latest_version' => 'nullable|number|min:1|max:9',
+            'download_link' => 'nullable|url',
+            'supported_os' => 'nullable|array',
+            'vote' => 'nullable|number|min:1|max:5'
+        ]);
         $data = $request->all();
         $tool->fill($data);
         $tool->save();
