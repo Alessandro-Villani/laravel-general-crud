@@ -52,9 +52,14 @@ class ToolController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tool $tool)
     {
-        //
+        $request->validate();
+        $data = $request->all();
+        $tool->fill($data);
+        $tool->save();
+
+        return to_route('tools.show', $tool->id);
     }
 
     /**
