@@ -34,7 +34,23 @@ class ToolController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', IlluminateValidationRule::unique('tools')],
+            'img_url' => 'nullable|url',
+            'description' => 'nullable|string',
+            'category' => 'nullable|string',
+            'release_year' => 'nullable|numeric|min:1950|max:3000',
+            'latest_version' => 'nullable|numeric|min:1|max:9',
+            'download_link' => 'nullable|url',
+            'supported_os' => 'nullable|array',
+            'vote' => 'nullable|numeric|min:1|max:5'
+        ]);
+        $data = $request->all();
+        $tool = new Tool();
+        $tool->fill($data);
+        $tool->save();
+
+        return to_route('tools.show', $tool->id);
     }
 
     /**
