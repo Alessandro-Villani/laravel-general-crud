@@ -13,6 +13,15 @@ return new class extends Migration
     {
         Schema::create('tools', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 50)->unique()->required();
+            $table->text('img_url')->nullable();
+            $table->text('description')->nullable();
+            $table->string('category', 50)->nullable();
+            $table->year('release_year')->nullable();
+            $table->string('latest_version', 10)->nullable();
+            $table->text('download_link')->nullable();
+            $table->enum('supported_os', ['windows', 'linux', 'ios'])->nullable();
+            $table->unsignedTinyInteger('vote')->nullable();
             $table->timestamps();
         });
     }
