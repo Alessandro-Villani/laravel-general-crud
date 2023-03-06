@@ -41,17 +41,17 @@
         <div class="form-check form-switch">
             <label class="form-check-label" for="windows">windows</label>
             <input class="form-check-input" type="checkbox" role="switch" id="windows" name="supported_os"
-                @if (in_array('windows', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
+                @if ($tool->exists) @if (in_array('windows', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif @endif>
         </div>
         <div class="form-check form-switch">
             <label class="form-check-label" for="ios">ios</label>
             <input class="form-check-input" type="checkbox" role="switch" id="ios" name="supported_os"
-                @if (in_array('ios', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
+                @if ($tool->exists) @if (in_array('ios', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif @endif>
         </div>
         <div class="form-check form-switch">
             <label class="form-check-label" for="linux">linux</label>
             <input class="form-check-input" type="checkbox" role="switch" id="linux" name="supported_os"
-                @if (in_array('linux', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif>
+                @if ($tool->exists) @if (in_array('linux', $tool->supported_os) || in_array(old('supported_os'), $tool->supported_os)) checked @endif @endif>
         </div>
     </div>
     <div class="col-3">
