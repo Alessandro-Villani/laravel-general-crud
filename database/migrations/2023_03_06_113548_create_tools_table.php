@@ -20,7 +20,7 @@ return new class extends Migration
             $table->year('release_year')->nullable();
             $table->string('latest_version', 10)->nullable();
             $table->text('download_link')->nullable();
-            $table->enum('supported_os', ['windows', 'linux', 'ios'])->nullable();
+            $table->json('supported_os')->nullable();
             $table->unsignedTinyInteger('vote')->nullable();
             $table->timestamps();
         });
