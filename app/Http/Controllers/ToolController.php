@@ -77,13 +77,15 @@ class ToolController extends Controller
 
     public function restore(int $id)
     {
-        $tools= Tool::onlyTrashed()->findOrFail($id);
-        $tools->restore();
+        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool->restore();
         return to_route('tools.trash.index');
     }
 
-    public function definitiveDelete()
+    public function definitiveDelete(int $id)
     {
-        
+        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool->forceDelete();
+        return to_route('tools.trash.index');
     }
 }
