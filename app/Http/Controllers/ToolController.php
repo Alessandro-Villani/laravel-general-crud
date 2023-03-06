@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class ToolController extends Controller
@@ -33,9 +34,9 @@ class ToolController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Tool $tool)
     {
-        //
+        return view('tools.show', compact('tool'));
     }
 
     /**
