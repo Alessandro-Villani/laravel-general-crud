@@ -18,3 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [PageController::class, 'home'])->name('home');
 
 Route::resource('tools', ToolController::class);
+
+Route::get('tools/trash', [ToolController::class, 'trash'])->name('tools.trash.index');
+Route::patch('tools/{tool}/restore', [ToolController::class, 'restore'])->name('tools.trash.restore');
+Route::delete('tools/{tool}/definitive-delete', [ToolController::class, 'definitive-delete'])->name('tools.trash.definitive-delete');

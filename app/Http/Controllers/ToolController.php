@@ -61,4 +61,22 @@ class ToolController extends Controller
     {
         //
     }
+
+    /**
+     * Show trashed elements
+     */
+    public function trash()
+    {
+        //
+    }
+
+    public function restore()
+    {
+        //
+    }
+
+    public function definitiveDelete()
+    {
+        //
+    }
 }
