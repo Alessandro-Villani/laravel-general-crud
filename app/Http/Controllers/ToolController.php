@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tool;
 use Illuminate\Http\Request;
-use App\Models\Tool;
+
 
 class ToolController extends Controller
 {
@@ -80,14 +80,14 @@ class ToolController extends Controller
 
     public function restore(int $id)
     {
-        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool = Tool::onlyTrashed()->findOrFail($id);
         $tool->restore();
         return to_route('tools.trash.index');
     }
 
     public function definitiveDelete(int $id)
     {
-        $tool= Tool::onlyTrashed()->findOrFail($id);
+        $tool = Tool::onlyTrashed()->findOrFail($id);
         $tool->forceDelete();
         return to_route('tools.trash.index');
     }
