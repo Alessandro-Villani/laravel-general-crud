@@ -60,10 +60,10 @@ class ToolController extends Controller
             'description' => 'nullable|string',
             'category' => 'nullable|string',
             'release_year' => 'nullable|date',
-            'latest_version' => 'nullable|number|min:1|max:9',
+            'latest_version' => 'nullable|numeric|min:1|max:9',
             'download_link' => 'nullable|url',
             'supported_os' => 'nullable|array',
-            'vote' => 'nullable|number|min:1|max:5'
+            'vote' => 'nullable|numeric|min:1|max:5'
         ]);
         $data = $request->all();
         $tool->fill($data);
