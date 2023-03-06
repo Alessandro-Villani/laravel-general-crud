@@ -42,9 +42,9 @@ class ToolController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tool $tool)
     {
-        //
+        return view('tools.edit', compact('tool'));
     }
 
     /**
