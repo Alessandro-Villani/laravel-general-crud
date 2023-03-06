@@ -1,0 +1,14 @@
+#dashboard {
+    background-image: url('http://wmad.cs.vt.edu/images/code_background.png');
+    min-height: calc(100vh - 56px);
+
+
+    #tool-board {
+        background-color: #ddd;
+        border-radius: 20px;
+    }
+
+    #tool-info div {
+        margin: 5px 0;
+    }
+}
