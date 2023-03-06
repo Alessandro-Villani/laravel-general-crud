@@ -9,11 +9,11 @@
     @vite('resources/js/app.js')
 </head>
 <body>
-    @include('header')
+    @include('includes.header')
 
     @yield('content')
 
-    @include('footer')
+    @include('includes.footer')
 
     @yield('scripts')
 </body>
