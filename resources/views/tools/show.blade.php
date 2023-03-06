@@ -23,6 +23,7 @@
              <div><strong>Download Link:  </strong>  {{$tool->download_link}} </div>
              <div><strong>Operating Systems:  </strong>
                 <ul class="my-2">
+                    @if ($tool->supported_os)
                     @foreach ($tool->supported_os as $os)
                         <li>  
                             @if ($os === 'windows' )
@@ -35,6 +36,7 @@
                         
                         </li>
                     @endforeach
+                    @endif
                 </ul>
               </div>
               <div><strong>Voto:  </strong>
